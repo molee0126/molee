@@ -1,0 +1,57 @@
+name: Build FaceAI for iPhone
+on:
+  workflow_dispatch:
+  push:
+    branches: ['codex/faceai-v1-ios']
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: faceai-ios-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+      - name: Install pinned official Flutter
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '\r\n\357\273\277' < .flutter-version)"
+          git clone --depth 1 --branch "$VERSION" https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/flutter/bin/flutter" --disable-analytics
+      - name: Resolve dependencies
+        run: flutter pub get
+      - name: Analyze and test
+        run: |
+          flutter analyze
+          flutter test --reporter expanded
+      - name: Build release app without signing
+        run: flutter build ios --release --no-codesign --no-pub
+      - name: Package unsigned IPA for local signing on Windows
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/Payload
+          ditto build/ios/iphoneos/Runner.app artifacts/Payload/Runner.app
+          cp ios/Podfile.lock artifacts/Podfile.lock
+          { git rev-parse HEAD; flutter --version; xcodebuild -version; } > artifacts/BUILDINFO.txt
+          cd artifacts
+          /usr/bin/zip -q -r FaceAI-unsigned.ipa Payload
+          shasum -a 256 FaceAI-unsigned.ipa > SHA256.txt
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: FaceAI-iPhone-unsigned
+          path: |
+            artifacts/FaceAI-unsigned.ipa
+            artifacts/SHA256.txt
+            artifacts/Podfile.lock
+            artifacts/BUILDINFO.txt
+          if-no-files-found: error
+          retention-days: 7
+

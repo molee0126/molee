@@ -1,0 +1,38 @@
+Resolving dependencies...
+Downloading packages...
+  camera_avfoundation 0.10.3+1 (0.11.1 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  test_api 0.7.12 (0.7.15 available)
+Got dependencies!
+4 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing faceai_validation...                                  
+No issues found! (ran in 10.7s)
+00:00 +0: loading <validation-workspace>/test/app_flow_test.dart
+00:00 +0: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +1: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +2: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +3: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +4: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +5: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +6: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +7: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +8: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +9: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +10: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +11: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +12: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +13: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +14: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +15: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +16: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +17: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +18: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:00 +19: <validation-workspace>/test/app_flow_test.dart: consent blocks progress and camera starts only after explicit preparation
+00:02 +20: <validation-workspace>/test/app_flow_test.dart: five real UI captures save locally and finish without an assessment score
+00:06 +21: <validation-workspace>/test/app_flow_test.dart: denied camera offers retry and exit, never fake captures
+00:06 +22: <validation-workspace>/test/app_flow_test.dart: background stops camera and resume reopens it
+00:06 +23: <validation-workspace>/test/app_flow_test.dart: small screen and large text remain scrollable without overflow
+00:06 +24: All tests passed!
+验证完成，源码仍在 <source-workspace>
