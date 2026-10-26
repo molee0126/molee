@@ -8,7 +8,7 @@
 
 相机按需启动，关闭录音，串行处理拍摄与释放资源，切到后台时释放，恢复时重建。拍摄预览使用内存中的图片字节，避免已清理的临时照片被继续读取。
 
-iOS 配置相机用途、15.5 部署目标、CocoaPods 与新式 Flutter engine 注册；私有目录排除系统备份并设置 Data Protection。Android 配置相机权限、禁用录音与备份，release 清除联网权限。原生部分尚未经过设备构建与真机验证。
+iOS 配置相机用途、15.5 部署目标、CocoaPods 与新式 Flutter engine 注册；私有目录排除系统备份并设置 Data Protection。Android 配置相机权限、禁用录音与备份，release 清除联网权限。原生部分已通过 macOS/Xcode 云端编译，尚未经过 iPhone 真机验证。
 
 ## AI 关键点初步接入
 
