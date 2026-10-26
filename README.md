@@ -2,7 +2,7 @@
 
 消费者自拍面部美学 APP 的实际 Flutter 工程，中文 UI，iOS / Android，本地优先。已实现阶段 0/1 的五角度静态影像采集，并接入第一轮本机正面关键点检测实验模块；不产生美学评估结果。
 
-只有 Windows 与 iPhone 的安装路径已准备：**云端 Mac 编译 → 下载 IPA → Windows 本地签名安装**，详见 [iPhone 安装说明](docs/IPHONE_SETUP.md)。当前没有生成 IPA；云端构建和 iPhone 真机验收尚未执行。
+只有 Windows 与 iPhone 的安装路径已准备：**云端 Mac 编译 → 下载 IPA → Windows 本地签名安装**，详见 [iPhone 安装说明](docs/IPHONE_SETUP.md)。已完成 macOS/Xcode 云构建并生成未签名 IPA：[成功构建](https://github.com/molee0126/molee/actions/runs/40279964404) · [构建文件](https://github.com/molee0126/molee/actions/runs/40279964404/artifacts/12631558748)。安装时仍需在 Windows 本地签名；iPhone 真机验收尚未执行。
 
 ## 当前功能
 
@@ -41,7 +41,7 @@ Windows 已下载并校验官方 SDK。为避开 Windows 对中文 SDK 路径的
 .\scripts\flutter.ps1 build apk --debug
 ```
 
-Mac：`flutter build ios --no-codesign`。正式上架前需要独立设置签名、正式 applicationId / bundle identifier、图标及商店隐私声明，当前标识为 `com.faceai.face_ai`。
+Mac：`flutter build ios --no-codesign`。正式上架前需要独立设置签名、正式 applicationId / bundle identifier、图标及商店隐私声明，当前 Android applicationId 为 `com.faceai.face_ai`，iOS Bundle Identifier 为 `com.faceai.faceAi`。
 
 iOS 最低版本为 15.5，采用 CocoaPods；Android minSdk 为 24。iOS 构建配置和 Windows 侧载说明见 `docs/IPHONE_SETUP.md`。在当前中文目录请优先使用 `verify_windows.ps1`，该脚本复制到英文验证目录，不改变主源码。
 
@@ -81,3 +81,4 @@ Android 禁用系统备份与设备迁移；iOS 原生通道将私有目录排�
 - [Flutter ML Kit 桥接包：API 和 iOS 15.5 要求](https://pub.dev/packages/google_mlkit_face_detection)（社区维护，并非 Google 官方 Flutter SDK）
 
 前序聊天已检索，但其助手正文仅返回引用占位；本工程按本次请求中明确的范围实施，不推定未能读取的额外规格。
+

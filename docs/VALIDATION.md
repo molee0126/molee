@@ -27,12 +27,22 @@
 - 原中文工作区曾触发 Flutter 分析协议的非 ASCII 路径通信错误，SDK 中文路径曾触发着色器 include 失败。已将工具与缓存放到任务允许的英文路径，使用 `scripts/verify_windows.ps1` 在英文副本成功验证；主源码保留在原目录。没有修改 Flutter SDK 源码来绕过错误。
 - Windows 渲染器可能保持图片内存映射至测试进程退出，测试清理仅对系统错误 32 延后删除临时夹具；业务断言没有跳过。临时文件位于忽略提交的工具目录，进程结束后可清理。
 
+## iOS 云构建已完成
+
+- [GitHub Actions run #1](https://github.com/molee0126/molee/actions/runs/40279964404)：成功。
+- 构建源码提交：`ccb37ad3eeb7745bc578971ed6ae7200f4075858`。
+- macOS 云端静态分析无问题，24 项自动测试通过。
+- CocoaPods 安装完成；Xcode 原生编译成功（93.9 秒），产出 `Runner.app`（56.2 MB）。
+- IPA 已下载至本地，外层 artifact 与 IPA SHA-256 均校验通过，ZIP 完整性通过，确认为 arm64/iOS 15.5。
+- 原生依赖锁文件已保存到 `ios/Podfile.lock`；构建信息和文件校验见 `dist/iphone/BUILDINFO.txt` 与 `VERIFICATION.json`。
+- 未签名；没有 Apple 证书或描述文件，没有安装到手机。
+
 ## iOS 尚未完成的验收
 
-1. 云端 macOS 工作流尚未运行：需要用户控制的 GitHub 仓库和可用的 macOS Actions runner。
+1. 云端工作流已成功运行；尚未完成手机安装和真机验收。
 2. 原生相机权限、真实拍照尺寸、EXIF/镜像方向、锁屏及后台恢复尚未在 iPhone 上测试。
 3. iOS 备份排除、Data Protection 设置、照片删除与系统缓存行为尚未真机实测。
 4. ML Kit 原生推理、机型与光照覆盖未验证。当前仅接入本机适配和实验规则，不能视为有效的美学算法。
-5. 尚未完成 Apple 签名及安装。工作流只生成供 Windows 本地签名的未签名 release IPA；安装途径见 [iPhone 安装说明](IPHONE_SETUP.md)。
+5. 尚未完成 Apple 签名及安装。已生成供 Windows 本地签名的未签名 release IPA；安装途径见 [iPhone 安装说明](IPHONE_SETUP.md)。
 
 动态表情、几何测量、报告、科普、皮肤维度、VISIA、医生后台和品牌推荐均未实现。没有颜值总分、医学诊断或注射处方功能。

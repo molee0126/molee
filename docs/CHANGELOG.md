@@ -16,7 +16,7 @@ iOS 配置相机用途、15.5 部署目标、CocoaPods 与新式 Flutter engine 
 
 ## iPhone 安装准备
 
-加入手动触发的 GitHub macOS 构建流程，先测试后构建未签名 release IPA；产物包括校验、构建信息与原生依赖锁文件。加入 Windows 本地签名安装与 Mac 直接运行说明。本轮没有远程仓库、云端执行、IPA 或 Apple 签名。
+加入手动触发的 GitHub macOS 构建流程，先测试后构建未签名 release IPA；产物包括校验、构建信息与原生依赖锁文件。加入 Windows 本地签名安装与 Mac 直接运行说明。已推送到 molee0126/molee 的 codex/faceai-v1-ios 分支，[云构建](https://github.com/molee0126/molee/actions/runs/40279964404) 成功并生成 IPA。Apple 签名和 iPhone 安装仍需在用户电脑上完成。
 
 ## 验证
 

@@ -2,7 +2,14 @@
 
 你不需要自己购买 Mac，但原生 iOS 编译必须在 macOS/Xcode 环境执行。本工程已提供手动触发的云端 macOS 编译配置：`.github/workflows/ios.yml`。
 
-**当前交付的是源代码及构建流程。没有生成 IPA，也没有完成 iPhone 安装或真机验收。** 只有成功执行云构建后，才会有 `FaceAI-unsigned.ipa`。未签名 IPA 需要在 Windows 上重新签名才能安装。
+**已成功生成 FaceAI-unsigned.ipa，并通过 SHA-256、ZIP 完整性和 arm64 架构检查。尚未完成 Apple 签名、iPhone 安装或真机验收。**
+
+- 已在本地保存：`dist/iphone/FaceAI-unsigned.ipa`（约 24.2 MB）。
+- [本次成功构建](https://github.com/molee0126/molee/actions/runs/40279964404) · [下载本次云端文件](https://github.com/molee0126/molee/actions/runs/40279964404/artifacts/12631558748)；云端保留至 2026-11-02，本地文件不受该期限影响。
+- 最低 iOS 15.5，版本 1.0.0，Bundle Identifier `com.faceai.faceAi`。
+- SHA-256：`8488b59ec58fc0ad083c55f58c6fcf9a5af933578eb25bfc18050c7f170cd26d`。
+
+你现在可以直接从下面第 4 步开始：将 IPA 导入 Windows 上的签名安装工具。未签名 IPA 无法直接在手机上点击安装。
 
 ## 路径 A：云端编译，再用 Windows 安装
 
@@ -43,6 +50,6 @@ open ios/Runner.xcworkspace
 
 ## 当前限制
 
-Windows 本机已进行的检查见 `VALIDATION.md`。本地 Flutter 自动测试中的假相机不代表已验证真实 iPhone 相机。云构建工作流尚未运行，不等于 Xcode 已编译成功；后续可能仍需修复原生集成问题。
+Windows 本机已进行的检查见 `VALIDATION.md`。本地 Flutter 自动测试中的假相机不代表已验证真实 iPhone 相机。云端已通过静态分析、24 项测试及 Xcode 原生编译，生成 56.2 MB 的 Runner.app 并打包为 IPA。构建成功不代表已通过 iPhone 运行时验证，尤其还需检查权限、镜像、后台恢复、本地保存和关键点效果。
 
 开发者模式只允许开发签名应用运行，并不会替代签名，依据 [Apple 官方说明](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device)。云构建产物的获取方式见 [GitHub 官方 artifact 说明](https://docs.github.com/en/actions/tutorials/store-and-share-data)。
